@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package com.example.demo.model;
+
+import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+/**
+ * Table Client
+ * @author paloma
+ *
+ */
+
+@Data
+@Entity
+@Table(name = "client")
+public class Client {
+	
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	private String idClient;
+	
+	private String nameClient;
+	private String lastNameClient;
+	private String identificationClient;
+	private String addressClient;
+	private String telephoneNumberClient;
+	private String emailClient;
+	
+	public Client() {
+		
+	}
+}

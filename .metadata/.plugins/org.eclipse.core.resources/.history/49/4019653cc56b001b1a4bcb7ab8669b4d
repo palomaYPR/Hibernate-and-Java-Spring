@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.example.demo.business.services;
+
+/**
+ * @author paloma
+ *
+ */
+public class ServiceClient {
+
+}

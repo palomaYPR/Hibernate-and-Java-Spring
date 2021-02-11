@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.example.demo.view.resources;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.business.services.ServiceClient;
+import com.example.demo.model.Client;
+
+/**
+ * WebService to Client
+ * @author paloma
+ *
+ */
+
+@RestController
+@RequestMapping("/api/client")
+public class ResourceClient {
+	
+	private final ServiceClient serviceClient;
+	
+	public ResourceClient(ServiceClient serviceClient) {
+		this.serviceClient = serviceClient;
+	}
+	
+	public ResponseEntity<Client> createClient(){
+		
+	}
+}

@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package com.example.demo.model;
+
+import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * Table Client
+ * @author paloma
+ *
+ */
+
+@Entity
+@Table(name = "client")
+@Data
+public class Client {
+	
+	private String idClient;
+	
+	private String nameClient;
+	private String lastNameClient;
+	private String identificationClient;
+	private String addressClient;
+	private String telephoneNumberClient;
+	private String emailClient;
+	
+	public Client() {
+		
+	}
+}

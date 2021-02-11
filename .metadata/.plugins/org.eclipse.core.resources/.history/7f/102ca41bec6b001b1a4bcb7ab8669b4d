@@ -1,0 +1,36 @@
+/**
+ * 
+ */
+package com.example.demo.view.resources.vo;
+
+import lombok.Data;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+/**
+ * Table Client
+ * @author paloma
+ *
+ */
+
+@Data
+public class Client {
+
+	private String idClient;	
+	private String nameClient;
+	private String lastNameClient;
+	private String identificationClient;
+	private String addressClient;
+	private String telephoneNumberClient;
+	private String emailClient;
+
+}

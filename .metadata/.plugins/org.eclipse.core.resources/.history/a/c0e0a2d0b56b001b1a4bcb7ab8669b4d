@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.example.demo.business.repository;
+
+/**
+ * @author paloma
+ *
+ */
+public interface RepositoryClient {
+
+}

@@ -1,0 +1,72 @@
+/**
+ * 
+ */
+package com.example.demo.business.services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.demo.business.repository.RepositoryClient;
+import com.example.demo.model.Client;
+
+/**
+ * Class of client services definition
+ * @author paloma
+ *
+ */
+
+@Service
+@Transactional(readOnly = true)
+public class ServiceClient {
+	
+	private final RepositoryClient repositoryClient;	
+	
+public ServiceClient(RepositoryClient repositoryClient) {
+	this.repositoryClient = repositoryClient;
+	}
+	
+	/**
+	 * Method to save a client
+	 * @param client
+	 * @return
+	 */
+	@Transactional
+	public Client create(Client client) {
+		return this.repositoryClient.save(client);
+	}
+	
+	/**
+	 * Method to update a client
+	 * @param client
+	 * @return
+	 */
+	@Transactional
+	public Client update(Client client) {
+		return this.repositoryClient.save(client);
+	}
+	
+	/**
+	 * Method to delete a client
+	 * @param client
+	 * @return
+	 */
+	@Transactional
+	public void delete(Client client) {
+		this.repositoryClient.delete(client);
+	}
+	
+	/**
+	 * Method to consult a client by identification
+	 * @param identificationClient
+	 * @return
+	 */
+	public Client findByIdentification(String identificationClient) {
+		return this.repositoryClient.findByIdentification(identificationClient);
+	}
+	
+	public List<Client> findAll(){
+		return this.repositoryClient.findAll();
+	}
+}

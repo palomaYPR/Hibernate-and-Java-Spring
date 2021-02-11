@@ -1,0 +1,3 @@
+spring.security.user.name=platzi
+spring.security.user.password=quadrum.
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true

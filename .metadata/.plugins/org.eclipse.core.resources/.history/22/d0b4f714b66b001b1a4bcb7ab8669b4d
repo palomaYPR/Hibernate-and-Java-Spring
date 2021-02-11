@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.example.demo.business.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.model.Client;
+
+/**
+ * Interface to make operations with Client
+ * @author paloma
+ *
+ */
+public interface RepositoryClient extends JpaRepository<Client,String>{
+	
+}

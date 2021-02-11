@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package com.example.demo.business.services;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.business.repository.RepositoryClient;
+
+/**
+ * Class of client services definition
+ * @author paloma
+ *
+ */
+
+@Service
+public class ServiceClient {
+	
+	private final RepositoryClient repositoryClient;
+	
+
+	
+}

@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.example.demo.model;
+
+import lombok.Data;
+
+/**
+ * Clase que representa la tabla Cliente
+ * @author paloma
+ *
+ */
+@Data
+public class Client {
+	String nameClient;
+	String lastNameClient;
+	
+	public Client() {
+		
+	}
+}

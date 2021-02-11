@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package com.example.demo.model;
+
+/**
+ * Table Reservations
+ * @author paloma
+ *
+ */
+public class Reservations {
+
+}

@@ -1,0 +1,103 @@
+/**
+ * 
+ */
+package com.example.demo.view.resources;
+
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.business.services.ServiceClient;
+import com.example.demo.model.Client;
+import com.example.demo.view.resources.vo.ClientVO;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+/**
+ * WebService to Client
+ * 
+ * @author paloma
+ *
+ */
+
+@RestController
+@RequestMapping("/api/client")
+@Api(tags = "client")
+public class ResourceClient {
+
+	private final ServiceClient serviceClient;
+
+	public ResourceClient(ServiceClient serviceClient) {
+		this.serviceClient = serviceClient;
+	}
+
+	@PostMapping
+	@ApiOperation(value = "Create a client", notes = "Service to create a new client")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "Client create succesful!"),
+			@ApiResponse(code = 400, message = "Request failed")})
+	
+	public ResponseEntity<Client> createClient(@RequestBody ClientVO clientVo) {
+		Client cliente = new Client();
+		cliente.setNameClient(clientVo.getNameClient());
+		cliente.setLastNameClient(clientVo.getLastNameClient());
+		cliente.setAddressClient(clientVo.getAddressClient());
+		cliente.setTelephoneNumberClient(clientVo.getTelephoneNumberClient());
+		cliente.setEmailClient(clientVo.getEmailClient());
+
+		return new ResponseEntity<>(this.serviceClient.create(cliente), HttpStatus.CREATED);
+	}
+
+	@PutMapping("/{identification}")
+	@ApiOperation(value = "Update a client", notes = "Service to update a client")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "Client was update succesful!"),
+			@ApiResponse(code = 404, message = "Client wasn't found") })
+	
+	public ResponseEntity<Client> updateClient(@PathVariable("identification") String identification, ClientVO clientVo){
+		
+		Client cliente = this.serviceClient.findByIdentification(identification);
+		
+		if (cliente == null) {
+			return new ResponseEntity<Client>(HttpStatus.NOT_FOUND);
+		} else {				
+			cliente.setNameClient(clientVo.getNameClient());
+			cliente.setLastNameClient(clientVo.getLastNameClient());
+			cliente.setAddressClient(clientVo.getAddressClient());
+			cliente.setTelephoneNumberClient(clientVo.getTelephoneNumberClient());
+			cliente.setEmailClient(clientVo.getEmailClient());
+		}
+		return new ResponseEntity<>(this.serviceClient.update(cliente), HttpStatus.OK);		
+	}
+	
+	@DeleteMapping("/{identification}")
+	@ApiOperation(value = "Delete a client", notes = "Service to delete a client")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "Client was delete succesful!"),
+			@ApiResponse(code = 404, message = "Request failed")})
+	
+	public void removeClient(@PathVariable("identification") String identification) {
+		Client cliente = this.serviceClient.findByIdentification(identification);
+		
+		if (cliente == null) {
+			this.serviceClient.delete(cliente);
+		}
+	}
+	
+	@GetMapping
+	@ApiOperation(value = "Consult clients", notes = "Service to consult all clients")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "Clients found"),
+			@ApiResponse(code = 404, message = "No clients")})
+	public ResponseEntity<List<Client>> findAll() {
+		return ResponseEntity.ok(this.serviceClient.findAll());
+	}
+}

@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package com.example.demo.model;
+
+/**
+ * Clase que representa la tabla Cliente
+ * @author paloma
+ *
+ */
+public class Client {
+
+}

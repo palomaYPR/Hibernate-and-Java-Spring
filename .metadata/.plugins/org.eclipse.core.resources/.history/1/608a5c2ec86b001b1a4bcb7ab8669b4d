@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package com.example.demo.business.services;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.business.repository.RepositoryClient;
+import com.example.demo.model.Client;
+
+/**
+ * Class of client services definition
+ * @author paloma
+ *
+ */
+
+@Service
+public class ServiceClient {
+	
+	private final RepositoryClient repositoryClient;	
+	
+public ServiceClient(RepositoryClient repositoryClient) {
+	this.repositoryClient = repositoryClient;
+	}
+	
+	/**
+	 * Method to save a client
+	 * @param client
+	 * @return
+	 */
+	public Client create(Client client) {
+		return this.repositoryClient.save(client);
+	}
+	
+	/**
+	 * Method to update a client
+	 * @param client
+	 * @return
+	 */
+	public Client update(Client client) {
+		return this.repositoryClient.save(client);
+	}
+	
+	public Client delete(Client client) {
+		return this.repositoryClient.delete(client);
+	}
+}

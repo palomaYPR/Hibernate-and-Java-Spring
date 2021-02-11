@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.example.demo.business.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.model.Reservations;
+
+/**
+ * @author paloma
+ *
+ */
+public interface RepositoryReservation extends JpaRepository<Reservations, String>{
+
+}
